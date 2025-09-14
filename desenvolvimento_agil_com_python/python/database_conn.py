@@ -54,9 +54,9 @@ try:
     connection.commit()
     print("Tabelas criadas com sucesso!")
     
-except sqlite3.Error as e:
-    print("Erro ao criar tabelas:", e)
-    
+except sqlite3.DatabaseError as err: #type:ignore
+    print("Erro no banco de dados: ", err)
+
 finally:
     if connection: #type:ignore
         cursor.close() #type:ignore
